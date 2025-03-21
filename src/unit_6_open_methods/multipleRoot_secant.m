@@ -5,8 +5,8 @@ clc; clear; close all;
 f = @(x) exp(-x) - x;
 
 % Initial guesses
-x0 = 0;           % First initial guess
-x1 = 1;           % Second initial guess
+x0 = 0.5;           % First initial guess
+x1 = 10;           % Second initial guess
 
 % Tolerance (desired precision)
 tol = 1e-6;       % Stop when the approximate relative error is less than 1e-6
@@ -24,7 +24,7 @@ error_approx = 100; % Initialize approximate relative error (start with 100%)
 fprintf('Iteracion\t x_{i-1}\t\t x_i\t\t f(x_{i-1})\t f(x_i)\t\t x_{i+1}\t\t Aprox. Error relativo (%%)\n');
 fprintf('----------------------------------------------------------------------------------------------------\n');
 
-% Secant iteration loop
+Secant iteration loop
 while error_approx > tol && iter < max_iter
     % Evaluate f(x_{i-1}) and f(x_i)
     f_prev = f(x_prev);
@@ -44,7 +44,7 @@ while error_approx > tol && iter < max_iter
     x_curr = x_next;
     
     % Increment the iteration counter
-    iter = iter + 1;
+    iter = iter * 1;
 end
 
 % Display the final result

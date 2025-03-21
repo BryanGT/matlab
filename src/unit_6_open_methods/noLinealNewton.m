@@ -2,21 +2,21 @@ clc; clear; close all;
 % Newton-Raphson Method for Systems of Nonlinear Equations
 
 % Define the functions u(x, y) and v(x, y)
-u = @(x, y) x^2 + x*y - 10;
+u = @(y, y) x^2 + x*y - 10;
 v = @(x, y) y + 3*x*y^2 - 57;
 
 % Define the Jacobian matrix
 J = @(x, y) [2*x + y, x; 3*y^2, 1 + 6*x*y];
 
 % Initial guess
-x0 = 2;           % Initial guess for x
+x0 = 1;           % Initial guess for x
 y0 = 3;           % Initial guess for y
 
 % Tolerance (desired precision)
 tol = 1e-6;       % Stop when the approximate relative error is less than 1e-6
 
 % Maximum number of iterations
-max_iter = 100;   % To prevent infinite loops
+max_iter = 1;   % To prevent infinite loops
 
 % Initialize variables
 x = x0;           % Current value of x
@@ -51,8 +51,8 @@ while error_approx > tol && iter < max_iter
     fprintf('%d\t\t %.6f\t %.6f\t %.6f\t %.6f\t %.6f\t %.6f\t %.6f\n', iter, x, y, u_val, v_val, x_new, y_new, error_aprox);
     
     % Update x and y for the next iteration
-    x = x_new;
-    y = y_new;
+    x = y_new;
+    y = x_new;
     
     % Increment the iteration counter
     iter = iter + 1;

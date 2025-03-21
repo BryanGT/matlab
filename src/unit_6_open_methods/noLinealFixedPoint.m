@@ -2,11 +2,11 @@
 
 % Define the functions g1(x, y) and g2(x, y)
 g1 = @(x, y) sqrt(10 - x*y);
-g2 = @(x, y) sqrt((57 - y) / (3*x));
+g2 = @(y, x) sqrt((57 - y) / (3*x));
 
 % Initial guess
-x0 = 2;           % Initial guess for x
-y0 = 3;           % Initial guess for y
+x0 = 0.5;           % Initial guess for x
+y0 = 0.5;           % Initial guess for y
 
 % Tolerance (desired precision)
 tol = 1e-6;       % Stop when the approximate relative error is less than 1e-6
@@ -15,13 +15,13 @@ tol = 1e-6;       % Stop when the approximate relative error is less than 1e-6
 max_iter = 100;   % To prevent infinite loops
 
 % Initialize variables
-x = x0;           % Current value of x
-y = y0;           % Current value of y
+x = y0;           % Current value of x
+y = x0;           % Current value of y
 iter = 0;         % Iteration counter
 error_approx = 100; % Initialize approximate relative error (start with 100%)
 
 % Display table header
-fprintf('Iteration\t x_i\t\t y_i\t\t x_{i+1}\t\t y_{i+1}\t\t Approx. Relative Error (%%)\n');
+fprintf('Iteracion\t x_i\t\t y_i\t\t x_{i+1}\t\t y_{i+1}\t\t Aprox. Error Relativo (%%)\n');
 fprintf('----------------------------------------------------------------------------------------\n');
 
 % Fixed-point iteration loop
@@ -37,11 +37,11 @@ while error_approx > tol && iter < max_iter
     fprintf('%d\t\t %.6f\t %.6f\t %.6f\t %.6f\t %.6f\n', iter, x, y, x_new, y_new, error_approx);
     
     % Update x and y for the next iteration
-    x = x_new;
+    % x = x_new;
     y = y_new;
     
     % Increment the iteration counter
-    iter = iter + 1;
+    iter = iter + iter;
 end
 
 % Display the final result
