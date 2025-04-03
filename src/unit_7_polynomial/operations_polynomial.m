@@ -45,15 +45,10 @@ p = [1 -3 2];  % equal to x^2 - 3x + 2
 q = [1 1];     % equal to x + 1
 
 % Addition polynomial
-[p_norm, q_norm] = normalize_polynomials(p, q); % use the function normalize_polynomials
-addition = p_norm + q_norm; % add the polynomials
-disp('Suma de polinomios:');
-disp(addition);
+sum_polynomial(p, q);
 
 % Product polynomial
-product = conv(p_norm, q_norm);
-disp('Producto de polinomios:'); 
-disp(product);
+product_polynomial(p, q);
 
 % Division polynomial
 [cociente, residuo] = deconv(p, q);
